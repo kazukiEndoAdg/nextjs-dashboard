@@ -2,6 +2,7 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from './ui/fonts';
+import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -26,7 +27,27 @@ export default function Page() {
           </Link>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* Add Hero Images Here */}
+          {/* NOTE: Image component */}
+          {/* The <Image> Component is an extension of the HTML <img> tag, and comes with automatic image optimization, such as:
+
+          Preventing layout shift automatically when images are loading.
+          Resizing images to avoid shipping large images to devices with a smaller viewport.
+          Lazy loading images by default (images load as they enter the viewport).
+          Serving images in modern formats, like WebP and AVIF, when the browser supports it. */}
+          <Image
+            src="/hero-desktop.png"
+            width={1000}
+            height={760}
+            className="hidden md:block"
+            alt="Screenshots of the dashboard project showing desktop version"
+          />
+          <Image
+            src="/hero-mobile.png"
+            width={560}
+            height={620}
+            className="block md:hidden"
+            alt="Screenshots of the dashboard project showing mobile version"
+          />
         </div>
       </div>
     </main>
