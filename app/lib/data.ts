@@ -62,6 +62,12 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    // NOTE: Parallel data fetching
+    // By using this pattern, you can:
+
+    // Start executing all data fetches at the same time, which is faster than waiting for each request to complete in a waterfall.
+    // Use a native JavaScript pattern that can be applied to any library or framework.
+    // 複数のSQLクエリ同時に実行することができます。前のリクエストが完了してから次のリクエストが開始する、リクエストウォーターフォールを発生させずに。
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
